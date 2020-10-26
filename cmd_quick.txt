@@ -1,0 +1,117 @@
+PyCharm
+
+1 ctrl+alt+左右方向键：前后位置
+2 alt+F12: Terminal
+3 ctrl+/: 快速注释当前行
+4 ctrl+d: 复制上一行创建新的一行
+5 ctrl+(-/+)：缩(展)当前行
+6 ctrl+alt+l: 一键PEP8
+7 python -m cProfile xxx.py： python代码性能查看
+
+
+vim
+
+1 移动光标
+h,j,k,l: 左，上，下，右
+e,b: 跳到下(上)一字
+^, $: 行首(尾)
+gg: 跳到文首
+G: 跳到文尾
+5gg/G: 调至第5行
+gd: 跳至当前光标所在的变量的声明处
+fx: 在当前行查找x字符，找到了就跳转至
+fx后;: 重复fx操作
+*/#：查找光标所在处的单词：向下(上)查找
+:set nu: 显示行号
+
+2 删除复制
+dd: 删除光标所在行
+dw: 删除一个单词
+p/P: 粘贴当前内容到上(下)面
+
+3 插入模式
+i: 当前贯标进入插入模式
+I: 在行首处插入
+a: 追加在光标后
+A: 追加在行末
+o: 在当前行之下插入
+O: 在当前行之上插入
+
+4 编辑
+ctrl+s: 锁屏
+ctrl+q: 解锁
+cc: 删除当前行并进入插入模式
+cw：删除当前单词并进入插入模式
+u: 撤销
+
+5 查找和替换
+/pattern: 向后搜索字符串pattern
+?pattern: 向前搜索字符串pattern
+查找后回车+n(N): 查找下(上)一个
+:%s/old/new/g: 将文件内的old词全部替换为new
+
+
+6 退出编辑器
+:w: 保存
+:wq: 退出并保存
+:q: 退出
+:q!: 退出不保存
+
+
+ubuntu
+
+1 文件传输：
+本地->server：scp -r file name@ip:/path/
+server->本地：scp -r name@ip:/path/ /localpath/
+2 查看cpu信息: vim /proc/cpuinfo
+3 查看内存: free -m
+4 查看进程资源情况: top
+5 查看磁盘使用情况: df -h
+6 查看当前目录下文件占用磁盘大小: du -sh *
+7 后台运行进程： nohup 命令 &
+8 查看后台运行的jobs: jobs
+9 将一个正在前台执行的命令放到后台，并且暂停: ctrl+z
+10 将后台中的命令调至前台继续运行: fg
+11 将一个在后台暂停的命令，变成继续执行: bg
+12 ssh无需密码连接
+    在本机生成公钥私钥：ssh-keygen -t rsa
+    将本机的公钥拷贝到远程上的 scp id_rsa.pun .ssh/, 然后写入authorized_keys中
+
+
+conda
+
+1 查看channels
+conda config --show channels
+
+2 创建环境
+conda create --name pyenv_name python==3.6.8
+
+3 添加镜像源
+conda config --add channels https://mirrors.tuna.tsinghua.edu.cn/anaconda/pkgs/main
+conda config --add channels https://mirrors.tuna.tsinghua.edu.cn/anaconda/pkgs/free/
+conda config --add channels https://mirrors.tuna.tsinghua.edu.cn/anaconda/cloud/conda-forge 
+conda config --add channels https://mirrors.tuna.tsinghua.edu.cn/anaconda/cloud/msys2/
+conda config --add channels https://mirrors.tuna.tsinghua.edu.cn/anaconda/cloud/pytorch/
+下载时候展示源
+conda config --set show_channel_urls yes
+删除源
+conda config --remove channels https://mirrors.ustc.edu.cn/anaconda/pkgs/main/
+
+4 安装
+conda install pakeage
+
+
+pytorch
+中文手册：https://github.com/zergtant/pytorch-handbook
+
+1 torch.stack((tensor1, tensor2)): 可以将squence(tensor)连接转换为tensor的连接
+2 tensor.detach(): 返回一个新的Variable，从当前计算图中分离下来的，但是仍指向原变量的存放位置,不同之处只是requires_grad为false，得到的这个Variable永远不需要计算其梯度，不具有grad。
+3 tensor.data: 与.detach不同在于.data的修改不会被autograd追踪，这样当进行backward()时它不会报错，回得到一个错误的backward值。
+4 torch.gather(dim, index), 选取dim维度上的index位置数据
+
+numpy:
+1 rand：数组元素在0-1之间
+  randint：指定上下限的整数
+  uniform：指定上下限的小数
+  randn：标准正态分布
+  normal：指定均值、标准差的正态分布
